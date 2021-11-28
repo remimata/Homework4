@@ -18,16 +18,17 @@
 
     <%- include('./partials/footer.ejs') %>
     <script>
-      
-      document.querySelectorAll("a.delete").forEach((element) => {
+      // delete button
+      document.querySelectorAll(".delete").forEach((element) => {
         element.addEventListener("click", (e) => {
           let endpoint = `/posts/${element.dataset.del}`;
           fetch(endpoint, {
             method: "DELETE",
-          }).then((window.location.href = "/"));
+          });
         });
       });
 
+      // like_button
       document.querySelectorAll("input.like_button").forEach((like_button) => {
         like_button.addEventListener("click", (e) => {
           var data_like = like_button.dataset.like;
@@ -36,9 +37,10 @@
           );
           var new_likes = parseInt(span_like.textContent, 10) + 1;
           span_like.textContent = new_likes;
-          console.log(new_likes);
           // update database
-          fetch(`/likes/${data_like}`, { method: "PUT", body: JSON.stringify({likes:new_likes})})
+          form = new FormData();
+          form.append("likes", new_likes);
+          fetch(`/likes/${data_like}`, { method: "PUT", body: form });
         });
       });
     </script>
