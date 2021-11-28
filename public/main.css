@@ -1,0 +1,123 @@
+* {
+  font-family: "Open Sans", sans-serif; }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1778bd; }
+
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.719); }
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50; }
+
+#nav {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center; }
+  #nav .search-container {
+    margin-right: 20%; }
+    #nav .search-container input {
+      background-color: rgba(255, 255, 255, 0.418);
+      border-radius: 10px;
+      width: 250px; }
+    #nav .search-container button {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.418);
+      border-radius: 10px; }
+  #nav a {
+    font-weight: bold;
+    color: #ffffff; }
+    #nav a.router-link-exact-active {
+      color: #42b983; }
+  #nav .logo {
+    margin-left: 10px;
+    height: 40px; }
+  #nav #logo_profile {
+    margin-left: 35%; }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+  background-color: white;
+  padding-top: 80px;
+  padding-bottom: 20px; }
+
+.post {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 20px; }
+
+.post-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between; }
+
+.post-header img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: solid 1px grey;
+  margin-left: 20px; }
+
+.post-profile {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px; }
+
+small {
+  margin-top: 5px;
+  margin-right: 20px;
+  color: #999a9b; }
+
+.image {
+  margin: 0 auto;
+  width: 60%;
+  object-fit: cover; }
+
+img + p {
+  font-weight: bold;
+  padding-left: 20px;
+  text-align: center; }
+
+.like_button {
+  margin-left: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px; }
+
+.like_button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset; }
+
+.onlytext-post {
+  font-weight: bold;
+  padding-left: 20px; }
+
+.divlike {
+  display: flex;
+  align-items: center;
+  justify-content: left; }
+
+.divlike span {
+  margin-left: 10px; }

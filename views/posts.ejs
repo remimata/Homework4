@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+    <title>PostIt</title>
+  </head>
+  <body>
+    <%- include('./partials/header.ejs') %>
+    <div class="container">
+      <% if (posts.length > 0) { %> <% posts.forEach(post => { %> <%-
+      include('./singlepost.ejs', {post: post}); %> <% }) %> <% } else { %>
+      <p>You did not post anything...</p>
+      <% } %>
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+    <script>
+      
+      document.querySelectorAll("a.delete").forEach((element) => {
+        element.addEventListener("click", (e) => {
+          let endpoint = `/posts/${element.dataset.del}`;
+          fetch(endpoint, {
+            method: "DELETE",
+          }).then((window.location.href = "/"));
+        });
+      });
+
+      document.querySelectorAll("input.like_button").forEach((like_button) => {
+        like_button.addEventListener("click", (e) => {
+          var data_like = like_button.dataset.like;
+          var span_like = document.querySelector(
+            `span[data-like='${data_like}']`
+          );
+          var new_likes = parseInt(span_like.textContent, 10) + 1;
+          span_like.textContent = new_likes;
+          console.log(new_likes);
+          // update database
+          fetch(`/likes/${data_like}`, { method: "PUT", body: JSON.stringify({likes:new_likes})})
+        });
+      });
+    </script>
+  </body>
+</html>
