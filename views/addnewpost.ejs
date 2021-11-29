@@ -9,18 +9,22 @@
   </head>
   <body>
     <%- include('./partials/header.ejs') %>
-
     <div class="create-post">
+      <img
+        class="create_img"
+        src="https://www.onlygfx.com/wp-content/uploads/2020/07/blank-post-it-note-1.png"
+      />
       <form action="/posts" method="POST" enctype="multipart/form-data">
         <label for="title">Post Description :</label>
+
         <textarea name="description" cols="30" rows="10"></textarea><br />
         <label for="body">Post image:</label>
-        <input type="file" name="image" accept=".jpg, .jpeg, .png"><br />
-        <button>Submit</button>
+        <input type="file" name="image" accept=".jpg, .jpeg, .png" /><br />
+        <button>Post It</button>
       </form>
     </div>
+
     <%- include('./partials/footer.ejs') %>
-    <script>
-    </script>
+    <script></script>
   </body>
 </html>
