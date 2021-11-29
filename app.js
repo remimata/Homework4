@@ -115,7 +115,6 @@ app.delete("/posts/:id", async (req, res) => {
     const deletepost = await pool.query("DELETE FROM posts WHERE id = $1", [
       id,
     ]);
-    res.redirect('/');
   } catch (err) {
     console.error(err.message);
   }

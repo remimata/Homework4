@@ -17,7 +17,12 @@
       data-like="<%= post.id %>"
     />
     <span class="span_like" data-like="<%= post.id %>"><%= post.likes %></span>
-    <button class="delete" data-del="<%= post.id %>">Delete</button>
+    <input
+      class="delete"
+      data-del="<%= post.id %>"
+      type="button"
+      value="Delete"
+      onclick="reload()"
+    />
   </div>
 </div>
-

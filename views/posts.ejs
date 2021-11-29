@@ -15,16 +15,14 @@
       <p>You did not post anything...</p>
       <% } %>
     </div>
-
     <%- include('./partials/footer.ejs') %>
     <script>
       // delete button
-      document.querySelectorAll(".delete").forEach((element) => {
-        element.addEventListener("click", (e) => {
-          let endpoint = `/posts/${element.dataset.del}`;
-          fetch(endpoint, {
+      document.querySelectorAll(".delete").forEach((delete_button) => {
+        delete_button.addEventListener("click", (e) => {
+          fetch(`/posts/${delete_button.dataset.del}`, {
             method: "DELETE",
-          });
+          })
         });
       });
 
@@ -43,6 +41,10 @@
           fetch(`/likes/${data_like}`, { method: "PUT", body: form });
         });
       });
+
+      function reload(){
+        window.location.href = '/'
+      }
     </script>
   </body>
 </html>
