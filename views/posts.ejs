@@ -25,6 +25,16 @@
           })
         });
       });
+      // single post
+
+      document.querySelectorAll(".post").forEach((post) => {
+        post.addEventListener("click", (e) => {
+          fetch(`/singlepost/${post.dataset.post}`, {
+            method: "GET",
+          })
+        });
+      });
+
 
       // like_button
       document.querySelectorAll("input.like_button").forEach((like_button) => {

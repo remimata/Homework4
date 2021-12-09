@@ -35,6 +35,17 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.get("/singlepost/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log("get a post request has arrived");
+    const posts = await pool.query("SELECT * FROM posts WHERE id = $1", [id]);
+    res.render("singlepost", { post: posts.rows });
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 app.get("/create", async (req, res) => {
   res.render("addnewpost");
 });
@@ -81,7 +92,7 @@ app.post("/posts/", async (req, res) => {
     }
     // Update database
     const description = req.body.description;
-    const created_date = new Date(Date.now()).toLocaleString();
+    const created_date = new Date(Date.now());
     const photo_profile = "profile" + Math.round(Math.random() * 6)+".jpg";
     const newpost = await pool.query(
       "INSERT INTO posts(photo_profile, image, description, likes, created_date) values ($1, $2, $3, 0, $4) RETURNING*",
