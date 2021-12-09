@@ -1,18 +1,18 @@
 <div class="post" data-post="<%= post.id %>">
   <div class="post-header">
-    <img src="./assets/<%= post.photo_profile %>" />
+    <img src="/assets/<%= post.photo_profile %>" />
     <small class="created_date"
       ><%= new Date(post.created_date).toLocaleDateString("en-GB",{ weekday:
       'long', year: 'numeric', month: 'long', day: 'numeric' }) %></small
     >
   </div>
-  <img src="./assets/<%= post.image %>" class="image" />
+  <img src="/assets/<%= post.image %>" class="image" />
   <p><%= post.description %></p>
   <div class="divlike">
     <input
       class="like_button"
       type="image"
-      src="./assets/likebutton.png"
+      src="/assets/likebutton.png"
       alt="like_button"
       data-like="<%= post.id %>"
     />

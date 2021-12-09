@@ -29,9 +29,7 @@
 
       document.querySelectorAll(".post").forEach((post) => {
         post.addEventListener("click", (e) => {
-          fetch(`/singlepost/${post.dataset.post}`, {
-            method: "GET",
-          })
+          document.location.href=`/singlepost/${post.dataset.post}`
         });
       });
 
