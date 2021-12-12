@@ -1,28 +1,157 @@
-<div class="post" data-post="<%= post.id %>">
-  <div class="post-header">
-    <img src="/assets/<%= post.photo_profile %>" />
-    <small class="created_date"
-      ><%= new Date(post.created_date).toLocaleDateString("en-GB",{ weekday:
-      'long', year: 'numeric', month: 'long', day: 'numeric' }) %></small
-    >
-  </div>
-  <img src="/assets/<%= post.image %>" class="image" />
-  <p><%= post.description %></p>
-  <div class="divlike">
-    <input
-      class="like_button"
-      type="image"
-      src="/assets/likebutton.png"
-      alt="like_button"
-      data-like="<%= post.id %>"
-    />
-    <span class="span_like" data-like="<%= post.id %>"><%= post.likes %></span>
-    <input
-      class="delete"
-      data-del="<%= post.id %>"
-      type="button"
-      value="Delete"
-      onclick="reload()"
-    />
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>single Post</title>
+    <style>
+      .post {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+          rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+          rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+        margin: 0 auto;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+      }
+      .post-header {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .post-header img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: solid 1px grey;
+        margin-left: 20px;
+      }
+      .post-profile {
+        margin-left: 20px;
+        margin-bottom: 10px;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+      }
+      small {
+        margin-top: 5px;
+        margin-right: 20px;
+        color: #999a9b;
+      }
+      .image {
+        margin: 0 auto;
+        width: 60%;
+        object-fit: cover;
+      }
+      img + p {
+        font-weight: bold;
+        padding-left: 20px;
+        text-align: center;
+      }
+      .like_button {
+        margin-left: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+      }
+      .like_button:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+          rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+          rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+      }
+      .onlytext-post {
+        font-weight: bold;
+        padding-left: 20px;
+      }
+      .divlike {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+      }
+      .divlike span {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="post">
+      <div class="post-header">
+        <img src="/assets/<%= post.photo_profile %>" />
+        <small class="created_date"
+          ><%= new Date(post.created_date).toLocaleDateString("en-GB",{ weekday:
+          'long', year: 'numeric', month: 'long', day: 'numeric' }) %></small
+        >
+      </div>
+      <img
+        src="/assets/<%= post.image %>"
+        class="image"
+        data-post="<%= post.id %>"
+      />
+      <p><%= post.description %></p>
+      <div class="divlike">
+        <input
+          class="like_button"
+          type="image"
+          src="/assets/likebutton.png"
+          alt="like_button"
+          data-like="<%= post.id %>"
+        />
+        <span class="span_like" data-like="<%= post.id %>"
+          ><%= post.likes %></span
+        >
+        <input
+          class="delete"
+          data-del="<%= post.id %>"
+          type="button"
+          value="Delete"
+          onclick="reload()"
+        />
+      </div>
+    </div>
+  </body>
+  <script>
+    // delete button
+    document.querySelectorAll(".delete").forEach((delete_button) => {
+      delete_button.addEventListener("click", (e) => {
+        fetch(`/posts/${delete_button.dataset.del}`, {
+          method: "DELETE",
+        });
+      });
+    });
+    // single post
+
+    document.querySelectorAll(".image").forEach((post) => {
+      post.addEventListener("click", (e) => {
+        document.location.href = `/singlepost/${post.dataset.post}`;
+      });
+    });
+
+    // like_button
+    document.querySelectorAll("input.like_button").forEach((like_button) => {
+      if (like_button.getAttribute("listener") !== "true") {
+        like_button.addEventListener("click", (e) => {
+          var data_like = like_button.dataset.like;
+          var span_like = document.querySelector(
+            `span[data-like='${data_like}']`
+          );
+          var new_likes = parseInt(span_like.textContent, 10) + 1;
+          span_like.textContent = new_likes;
+          // update database
+          form = new FormData();
+          form.append("likes", new_likes);
+          fetch(`/likes/${data_like}`, { method: "PUT", body: form });
+        });
+      }
+    });
+
+    function reload() {
+      window.location.href = "/";
+    }
+  </script>
+</html>

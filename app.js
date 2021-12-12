@@ -4,7 +4,6 @@ const express = require("express");
 const pool = require("./database");
 const cors = require("cors");
 const fileUpload = require('express-fileupload');
-const sassMiddleware = require("node-sass-middleware");
 
 // Config
 
@@ -16,13 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(fileUpload());
-app.use(
-  sassMiddleware({
-    src: __dirname + "/src/styles",
-    dest: __dirname + "/public",
-    debug: true,
-  })
-);
+
 
 // -----------------Pages--------------------
 app.get("/", async (req, res) => {
@@ -91,6 +84,7 @@ app.post("/posts/", async (req, res) => {
       });
     }
     // Update database
+    console.log(req.body)
     const description = req.body.description;
     const created_date = new Date(Date.now());
     const photo_profile = "profile" + Math.round(Math.random() * 6)+".jpg";
