@@ -29,6 +29,7 @@ body {
   padding-bottom: 10px;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
 }
 #nav .search-container {
   margin-right: 20%;
@@ -66,6 +67,8 @@ body {
   background-color: white;
   padding-top: 80px;
   padding-bottom: 20px;
+    
+   
 }
 .container .post {
   display: flex;
@@ -158,4 +161,31 @@ body {
 .create-post form textarea {
   background: none;
   outline: none;
+}
+
+.component{
+  position: relative;
+  bottom: 0px;
+  display:flex;
+  justify-content:center;
+  width:100%;
+  background-color: rgba(0, 0, 0, 0.719);
+}
+#app {
+font-family: Avenir, Helvetica, Arial, sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+text-align: center;
+color: #2c3e50;
+}
+
+#nav {
+padding: 30px;
+
+
+}
+#info {
+   padding: 30px;
+  color: #ffffff;
+  font-style: italic;
 }

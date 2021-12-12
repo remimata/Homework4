@@ -13,8 +13,10 @@
       <% if (posts.length > 0) { %> <% posts.forEach(post => { %> <%-
       include('./singlepost.ejs', {post: post}); %> <% }) %> <% } else { %>
       <p>You did not post anything...</p>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <% } %>
     </div>
+    <br>
     <%- include('./partials/footer.ejs') %>
   </body>
 </html>

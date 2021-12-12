@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./main.css" />
+        <title>Contact Us</title>
+      </head>
+  <body>
+    <%- include('./partials/header.ejs') %>
+    <div id = 'contactUs'>
+        <p id = 'title'>Contact Us</p>
+        <div id = 'frame'>
+          <br><p class = 'type_mail'>Email : </p><p class = 'mail'> contactPostIt@ut.ee</p>
+          <br><p class = 'type_phone'>Phone number : </p><p class = 'phone'> +33 874589132</p><br>
+        </div>
+      </div>
+
+    <%- include('./partials/footer.ejs') %>
+    <script></script>
+  </body>
+</html>
+  
+
+<style lang="scss" scoped>
+    #contactUs
+    {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 30px;
+
+
+    }
+    #title
+    {
+      text-align: center;
+      font-size: 50px;
+      font-weight : bold;
+    }
+    
+    #frame
+    {
+      /*margin-top: 10%;*/
+      margin-left: auto;
+      margin-right: auto;
+      border-width: 3px;
+      box-shadow: rgba(0, 0, 0, 0.5) 0px 6px 16px;
+      width: 580px;
+      background-color: #42b983;
+      }
+    
+    .type_mail
+    { 
+      margin-top: 0px;
+      text-align: center;
+      color: auto;
+      font-size: 35px;
+      font-weight: bold;
+    }
+    
+    .type_phone
+    {
+      text-align: center;
+      color: auto;
+      font-size: 35px;
+      font-weight: bold;
+    }
+         
+    .mail
+    { 
+      text-align: center;
+      color: auto;
+      font-size: 35px;
+      font-weight:lighter;
+    }
+    
+    .phone
+    {
+      margin-bottom: 0px;
+      text-align: center;
+      color: auto;
+      font-size: 35px;
+      font-weight:lighter;
+    }
+    
+    
+    
+    </style>
+  

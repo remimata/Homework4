@@ -9,22 +9,68 @@
   </head>
   <body>
     <%- include('./partials/header.ejs') %>
+    <p class ='desc'>Post description</p>
     <div class="create-post">
       <img
         class="create_img"
         src="https://www.onlygfx.com/wp-content/uploads/2020/07/blank-post-it-note-1.png"
       />
-      <form action="/posts" method="POST" enctype="multipart/form-data">
-        <label for="title">Post Description :</label>
-
-        <textarea name="description" cols="30" rows="10"></textarea><br />
-        <label for="body">Post image:</label>
-        <input type="file" name="image" accept=".jpg, .jpeg, .png" /><br />
+      <form class = "postForm" action="/posts" method="POST" enctype="multipart/form-data">
+        <textarea class = 'txtarea' name="description" cols="30" rows="10"></textarea><br />
+        <input class = "submitButton" type="file" name="image" accept=".jpg, .jpeg, .png" /><br />
         <button>Post It</button>
       </form>
+      
     </div>
-
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <%- include('./partials/footer.ejs') %>
     <script></script>
   </body>
 </html>
+
+<style>
+.desc{
+  position: absolute; 
+  top: 30%;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 150px; 
+  z-index: 1;
+}
+
+.create_img{
+  z-index: -1;
+}
+
+.postForm{
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin-left: 30%;
+}
+
+.txtarea{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: auto;
+  margin-top: 20%;
+  width: auto;
+}
+
+.submitButton{
+  display: flex;
+  flex-direction: column;
+  position:relative;
+  margin-left: 30%;
+  background: url(https://static.thenounproject.com/png/396915-200.png) center no-repeat;
+  background-size: 100% 100%;
+  cursor:pointer;
+  border:none;
+  width:80px;
+  height: 80px;
+}
+
+</style>
