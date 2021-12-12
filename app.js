@@ -43,10 +43,6 @@ app.get("/create", async (req, res) => {
   res.render("addnewpost");
 });
 
-app.get("/contactus", async (req, res) => {
-  res.render("contactus");
-});
-
 // ----------------API-----------------------
 
 app.get("/posts", async (req, res) => {

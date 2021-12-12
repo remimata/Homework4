@@ -124,7 +124,7 @@
         });
       });
     });
-  
+
     // single post
 
     document.querySelectorAll(".image").forEach((post) => {
@@ -135,26 +135,18 @@
 
     // like_button
     document.querySelectorAll("input.like_button").forEach((like_button) => {
-      if (like_button.getAttribute("listener") !== "true") {
-        like_button.addEventListener("click", (e) => {
-          var data_like = like_button.dataset.like;
-          var span_like = document.querySelector(
-            `span[data-like='${data_like}']`
-          );
-          var new_likes = parseInt(span_like.textContent, 10) + 1;
-          span_like.textContent = new_likes;
-          // update database
-          form = new FormData();
-          form.append("likes", new_likes);
-          fetch(`/likes/${data_like}`, { method: "PUT", body: form });
-        });
-      }
+      var data_like = like_button.dataset.like;
+      var span_like = document.querySelector(`span[data-like='${data_like}']`);
+      var new_likes = parseInt(span_like.textContent, 10) + 1;
+      like_button.onclick = function () {
+        span_like.textContent = new_likes;
+        // update database
+        form = new FormData();
+        form.append("likes", new_likes);
+        fetch(`/likes/${data_like}`, { method: "PUT", body: form });
+        this.onclick = null;
+      };
     });
-
-    function like(likes){
-
-    }
-
     function reload() {
       window.location.href = "/";
     }
